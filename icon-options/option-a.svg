@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1433"/><stop offset="1" stop-color="#2B1B6E"/></linearGradient>
+   <radialGradient id="gl" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#38BDF8" stop-opacity=".45"/><stop offset="1" stop-color="#38BDF8" stop-opacity="0"/></radialGradient>
+   <linearGradient id="yg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#A5B4FC"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg)"/><rect width="1024" height="1024" fill="url(#gl)"/>
+   <path d="M335 520 L512 705 L689 520 M512 705 L512 890" fill="none" stroke="url(#yg)" stroke-width="120" stroke-linecap="round" stroke-linejoin="round"/>
+   <path d="M352 336 V416 Q512 480 672 416 V336 L512 400 Z" fill="#B7C6F5"/>
+   <path d="M512 140 L800 255 L512 370 L224 255 Z" fill="#fff" stroke="#fff" stroke-width="16" stroke-linejoin="round"/>
+   <path d="M800 255 V385" stroke="#FBBF24" stroke-width="14" stroke-linecap="round"/><circle cx="800" cy="400" r="24" fill="#FBBF24"/></svg>

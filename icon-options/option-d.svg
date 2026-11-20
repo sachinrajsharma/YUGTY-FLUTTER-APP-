@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A1F"/><stop offset=".5" stop-color="#FF2E7E"/><stop offset="1" stop-color="#6D28D9"/></linearGradient>
+   <radialGradient id="gl" cx=".3" cy=".2" r=".6"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="1024" height="1024" fill="url(#bg)"/><rect width="1024" height="1024" fill="url(#gl)"/>
+   <g fill="none" stroke="#3B0764" stroke-opacity=".22" stroke-linecap="round" stroke-linejoin="round" stroke-width="156" transform="translate(0 22)">
+     <path d="M300 270 L512 560 L724 270 M512 560 L512 850"/></g>
+   <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="156">
+     <path d="M300 270 L512 560 L724 270 M512 560 L512 850"/></g>
+   <path d="M800 104 Q811.52 188.48 896 200 Q811.52 211.52 800 296 Q788.48 211.52 704 200 Q788.48 188.48 800 104 Z" fill="#FDE047"/><path d="M210 748 Q216.24 793.76 262 800 Q216.24 806.24 210 852 Q203.76 806.24 158 800 Q203.76 793.76 210 748 Z" fill="#fff"/><path d="M860 726 Q864.08 755.92 894 760 Q864.08 764.08 860 794 Q855.92 764.08 826 760 Q855.92 755.92 860 726 Z" fill="#fff"/></svg>

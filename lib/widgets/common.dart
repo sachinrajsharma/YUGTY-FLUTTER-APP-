@@ -199,11 +199,11 @@ class BrandMark extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(size * .3),
             gradient: const LinearGradient(
-                begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Tk.accent, Color(0xFF7C5CFF)]),
-            boxShadow: [BoxShadow(color: Tk.accent.withValues(alpha: .5), blurRadius: size * .6, spreadRadius: -6)],
+                begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF0F1B45), Color(0xFF060B1F)]),
+            border: Border.all(color: Tk.line),
+            boxShadow: [BoxShadow(color: const Color(0xFF7C5CFF).withValues(alpha: .45), blurRadius: size * .6, spreadRadius: -6)],
           ),
-          child: Text('Y',
-              style: GoogleFonts.sora(fontSize: size * .56, fontWeight: FontWeight.w800, color: Colors.white)),
+          child: CustomPaint(size: Size.square(size * .68), painter: _StepsPainter()),
         ),
         if (wordmark) ...[
           const SizedBox(width: 10),
@@ -306,4 +306,31 @@ class SectionTitle extends StatelessWidget {
             TextButton(onPressed: onAction, child: Text(action!, style: const TextStyle(color: Tk.accent))),
         ],
       );
+}
+
+/// The app icon's three rising steps (College ready, Trained, Job ready) and the student dot.
+class _StepsPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Artwork box in icon units: x 170..854, y 140..860.
+    const w = 684.0, h = 720.0;
+    final k = (size.width / w) < (size.height / h) ? size.width / w : size.height / h;
+    canvas.translate((size.width - w * k) / 2 - 170 * k, (size.height - h * k) / 2 - 140 * k);
+    canvas.scale(k);
+    void bar(double x, double y, double ht, Color a, Color b) {
+      final r = Rect.fromLTWH(x, y, 210, ht);
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(r, const Radius.circular(64)),
+        Paint()..shader = LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [a, b]).createShader(r),
+      );
+    }
+
+    bar(170, 600, 260, const Color(0xFF2563EB), const Color(0xFF38BDF8));
+    bar(407, 450, 410, const Color(0xFF059669), const Color(0xFF34D399));
+    bar(644, 300, 560, const Color(0xFF7C3AED), const Color(0xFFC4B5FD));
+    canvas.drawCircle(const Offset(749, 205), 62, Paint()..color = Colors.white);
+  }
+
+  @override
+  bool shouldRepaint(_StepsPainter oldDelegate) => false;
 }
