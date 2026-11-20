@@ -320,7 +320,7 @@ class _StepsPainter extends CustomPainter {
     void bar(double x, double y, double ht, Color a, Color b) {
       final r = Rect.fromLTWH(x, y, 210, ht);
       canvas.drawRRect(
-        RRect.fromRectAndRadius(r, const Radius.circular(64)),
+        RRect.fromRectAndRadius(r, const Radius.circular(105)),
         Paint()..shader = LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [a, b]).createShader(r),
       );
     }
@@ -328,7 +328,7 @@ class _StepsPainter extends CustomPainter {
     bar(170, 600, 260, const Color(0xFF2563EB), const Color(0xFF38BDF8));
     bar(407, 450, 410, const Color(0xFF059669), const Color(0xFF34D399));
     bar(644, 300, 560, const Color(0xFF7C3AED), const Color(0xFFC4B5FD));
-    canvas.drawCircle(const Offset(749, 205), 62, Paint()..color = Colors.white);
+    canvas.drawCircle(const Offset(749, 232), 52, Paint()..color = Colors.white);
   }
 
   @override

@@ -3,8 +3,8 @@
 <linearGradient id="s1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#38BDF8"/></linearGradient>
 <linearGradient id="s2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#059669"/><stop offset="1" stop-color="#34D399"/></linearGradient>
 <linearGradient id="s3" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#C4B5FD"/></linearGradient>
-<radialGradient id="gl" cx=".7" cy=".25" r=".5"><stop offset="0" stop-color="#7C5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/></radialGradient></defs><g transform="translate(512 512) scale(0.74) translate(-535 -500)">
-<rect x="170" y="600" width="210" height="260" rx="64" fill="#fff"/>
-<rect x="407" y="450" width="210" height="410" rx="64" fill="#fff"/>
-<rect x="644" y="300" width="210" height="560" rx="64" fill="#fff"/>
-<circle cx="749" cy="205" r="62" fill="#fff"/></g></svg>
+<radialGradient id="gl" cx=".7" cy=".25" r=".5"><stop offset="0" stop-color="#7C5CFF" stop-opacity=".5"/><stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/></radialGradient></defs><g transform="translate(512 512) scale(0.8) translate(-481 -510)">
+<rect x="170" y="600" width="210" height="260" rx="105" fill="#fff"/>
+<rect x="407" y="450" width="210" height="410" rx="105" fill="#fff"/>
+<rect x="644" y="300" width="210" height="560" rx="105" fill="#fff"/>
+<circle cx="749" cy="232" r="52" fill="#fff"/></g></svg>
