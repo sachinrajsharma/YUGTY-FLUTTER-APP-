@@ -20,7 +20,7 @@ class Tool {
 const tools = <Tool>[
   Tool('resume', 'Resume Studio', 'Pick a template and build a polished resume.', Icons.description_rounded,
       [Color(0xFF2563EB), Color(0xFF38BDF8)]),
-  Tool('ats', 'ATS Resume Check', 'Score and optimise your resume for screening software.', Icons.fact_check_rounded,
+  Tool('ats', 'ATS Check', 'Score and optimise your resume for screening software.', Icons.fact_check_rounded,
       [Color(0xFF059669), Color(0xFF34D399)]),
   Tool('cover', 'Cover Letter', 'Write tailored cover letters in minutes.', Icons.mail_rounded,
       [Color(0xFF7C3AED), Color(0xFFA78BFA)]),
@@ -47,7 +47,7 @@ class ToolsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppScope.of(context);
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
+      padding: EdgeInsets.fromLTRB(20, 18, 20, MediaQuery.paddingOf(context).bottom + 24),
       children: [
         Text('Your toolkit', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 30)),
         const SizedBox(height: 6),
@@ -62,7 +62,7 @@ class ToolsScreen extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 14,
             crossAxisSpacing: 14,
-            childAspectRatio: .86,
+            childAspectRatio: .66,
           ),
           itemBuilder: (_, i) {
             final t = tools[i];
@@ -90,13 +90,13 @@ class ToolsScreen extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  Text(t.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15.5)),
+                  Text(t.name, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
                   const SizedBox(height: 4),
                   Text(
                     included ? t.feature.values[s.planIndex] : 'Unlock on a higher plan',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: included ? Tk.mut : Tk.accent, fontSize: 12, height: 1.3),
+                    style: TextStyle(color: included ? Tk.mut : Tk.accent, fontSize: 11.5, height: 1.3),
                   ),
                 ],
               ),

@@ -33,6 +33,11 @@ class YugtyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: buildTheme(),
         themeMode: ThemeMode.dark,
+        builder: (context, child) => MediaQuery.withClampedTextScaling(
+          minScaleFactor: 1.0,
+          maxScaleFactor: 1.12,
+          child: child!,
+        ),
         home: const SplashScreen(),
       ),
     );

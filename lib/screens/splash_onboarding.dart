@@ -190,46 +190,58 @@ class _SlideView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Container(
-              width: 230,
-              height: 230,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                    begin: Alignment.topLeft, end: Alignment.bottomRight, colors: slide.colors),
-                boxShadow: [BoxShadow(color: slide.colors.last.withValues(alpha: .5), blurRadius: 80, spreadRadius: -10)],
-              ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(26),
+    return LayoutBuilder(
+      builder: (context, c) {
+        // Scale the orb to the space left after the text, so large system
+        // font sizes and short screens never overlap the dots or button.
+        final orb = (c.maxHeight * .34).clamp(110.0, 230.0).toDouble();
+        return SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(horizontal: 28),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: c.maxHeight),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    width: orb,
+                    height: orb,
                     decoration: BoxDecoration(
-                        shape: BoxShape.circle, border: Border.all(color: Colors.white24, width: 1.5)),
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                          begin: Alignment.topLeft, end: Alignment.bottomRight, colors: slide.colors),
+                      boxShadow: [BoxShadow(color: slide.colors.last.withValues(alpha: .5), blurRadius: 80, spreadRadius: -10)],
+                    ),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(orb * .11),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, border: Border.all(color: Colors.white24, width: 1.5)),
+                        ),
+                        Icon(slide.icon, size: orb * .42, color: Colors.white)
+                            .animate(onPlay: (c) => c.repeat(reverse: true))
+                            .moveY(begin: -6, end: 6, duration: 2.seconds, curve: Curves.easeInOut),
+                      ],
+                    ),
                   ),
-                  Icon(slide.icon, size: 96, color: Colors.white)
-                      .animate(onPlay: (c) => c.repeat(reverse: true))
-                      .moveY(begin: -6, end: 6, duration: 2.seconds, curve: Curves.easeInOut),
-                ],
-              ),
+                ),
+                SizedBox(height: (c.maxHeight * .05).clamp(16.0, 44.0).toDouble()),
+                Text(slide.step,
+                    style: GoogleFonts.sora(color: Tk.accent, fontSize: 12.5, letterSpacing: 3, fontWeight: FontWeight.w600)),
+                const SizedBox(height: 10),
+                Text(slide.title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 32, height: 1.1)),
+                const SizedBox(height: 12),
+                Text(slide.body, style: const TextStyle(color: Tk.mut, fontSize: 16, height: 1.5)),
+                const SizedBox(height: 12),
+              ],
             ),
           ),
-          const SizedBox(height: 44),
-          Text(slide.step,
-              style: GoogleFonts.sora(color: Tk.accent, fontSize: 12.5, letterSpacing: 3, fontWeight: FontWeight.w600)),
-          const SizedBox(height: 10),
-          Text(slide.title, style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 34, height: 1.1)),
-          const SizedBox(height: 14),
-          Text(slide.body, style: const TextStyle(color: Tk.mut, fontSize: 16.5, height: 1.5)),
-        ],
-      ),
+        );
+      },
     );
   }
 }

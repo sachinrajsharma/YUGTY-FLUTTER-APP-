@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
     final pct = (s.progress * 100).round();
     final phase = s.currentPhase;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 14, 20, 120),
+      padding: EdgeInsets.fromLTRB(20, 14, 20, MediaQuery.paddingOf(context).bottom + 24),
       children: [
         Row(
           children: [
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
         SectionTitle('Your toolkit', action: 'See all', onAction: () => onOpenTab(1)),
         const SizedBox(height: 10),
         SizedBox(
-          height: 138,
+          height: 150,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: tools.length,
@@ -168,6 +168,7 @@ class _PathStepper extends StatelessWidget {
         final color = done ? Tk.good : (on ? Tk.accent : Tk.mut);
         return Expanded(
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
@@ -188,7 +189,7 @@ class _PathStepper extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      i == 0 ? 'College\nready' : (i == 1 ? 'Trained' : 'Job\nready'),
+                      i == 0 ? 'College\nready' : (i == 1 ? 'Pro\ntrained' : 'Job\nready'),
                       textAlign: TextAlign.center,
                       style: TextStyle(color: on || done ? Tk.ink : Tk.mut, fontSize: 11.5, height: 1.2),
                     ),
@@ -196,7 +197,7 @@ class _PathStepper extends StatelessWidget {
                 ),
               ),
               if (i < 2)
-                Container(width: 22, height: 2, margin: const EdgeInsets.only(bottom: 26), color: done ? Tk.good : Colors.white12),
+                Container(width: 22, height: 2, margin: const EdgeInsets.only(top: 16), color: done ? Tk.good : Colors.white12),
             ],
           ),
         );

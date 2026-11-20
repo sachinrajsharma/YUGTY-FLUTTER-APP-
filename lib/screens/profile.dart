@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
     final plan = plans[s.planIndex];
     final verified = s.planIndex >= 1;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(20, 18, 20, 120),
+      padding: EdgeInsets.fromLTRB(20, 18, 20, MediaQuery.paddingOf(context).bottom + 24),
       children: [
         Text('Profile', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 30)),
         const SizedBox(height: 18),

@@ -41,14 +41,14 @@ class _PlansScreenState extends State<PlansScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Packages for the Seeker', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 28)),
+              Text('Seeker packages', style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 26)),
               const SizedBox(height: 6),
-              const Text('Start free, then step up as your job search gets serious.',
-                  style: TextStyle(color: Tk.mut, fontSize: 14.5)),
+              const Text('Start free, upgrade anytime.',
+                  maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: Tk.mut, fontSize: 13.5)),
             ],
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 6),
         Expanded(
           child: PageView.builder(
             controller: _pc,
@@ -60,7 +60,7 @@ class _PlansScreenState extends State<PlansScreen> {
                 child: Opacity(
                   opacity: 1 - .35 * d,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(6, 18, 6, 108),
+                    padding: EdgeInsets.fromLTRB(6, 18, 6, MediaQuery.paddingOf(context).bottom + 12),
                     child: _PlanCard(index: i, current: i == s.planIndex),
                   ),
                 ),
@@ -87,66 +87,79 @@ class _PlanCard extends StatelessWidget {
         Positioned.fill(
           child: GlassCard(
             highlight: p.popular,
-            padding: const EdgeInsets.fromLTRB(22, 26, 22, 20),
+            padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
             radius: 30,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(children: [
-                  Text(p.name.toUpperCase(),
-                      style: GoogleFonts.sora(color: Tk.accent, fontSize: 12.5, letterSpacing: 3, fontWeight: FontWeight.w600)),
-                  const Spacer(),
-                  if (current) const PlanBadge('Current'),
-                ]),
-                const SizedBox(height: 8),
-                Text(p.tagline, style: const TextStyle(color: Tk.mut, fontSize: 13.5, height: 1.35)),
-                const SizedBox(height: 14),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    if (p.isFree)
-                      Text('Free', style: GoogleFonts.sora(fontSize: 44, fontWeight: FontWeight.w800, height: 1))
-                    else ...[
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 18),
-                        child: Text('₹', style: GoogleFonts.sora(fontSize: 22, color: Tk.mut, fontWeight: FontWeight.w600)),
-                      ),
-                      Text(p.price.substring(1), style: GoogleFonts.sora(fontSize: 44, fontWeight: FontWeight.w800, height: 1)),
-                    ],
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(99),
-                    color: Colors.white.withValues(alpha: .06),
-                    border: Border.all(color: Tk.line),
-                  ),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    Container(
-                      width: 7,
-                      height: 7,
-                      decoration: const BoxDecoration(shape: BoxShape.circle, color: Tk.good),
-                    ),
-                    const SizedBox(width: 7),
-                    Text('Validity: ${p.validity}', style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600)),
-                  ]),
-                ),
-                const SizedBox(height: 16),
-                const Divider(color: Tk.line, height: 1),
                 Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsets.only(top: 14, bottom: 90),
-                    itemCount: features.length + 1,
-                    separatorBuilder: (_, _) => const SizedBox(height: 12),
-                    itemBuilder: (_, i) {
-                      if (i == features.length) {
-                        return const Text(conditionsNote, style: TextStyle(color: Tk.mut, fontSize: 11.5, height: 1.4));
-                      }
-                      return _FeatureRow(feature: features[i], value: features[i].values[index]);
-                    },
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      Row(children: [
+                        Text(p.name.toUpperCase(),
+                            style: GoogleFonts.sora(color: Tk.accent, fontSize: 12.5, letterSpacing: 3, fontWeight: FontWeight.w600)),
+                        const Spacer(),
+                        if (current) const PlanBadge('Current'),
+                      ]),
+                      const SizedBox(height: 6),
+                      Text(p.tagline, style: const TextStyle(color: Tk.mut, fontSize: 13, height: 1.35)),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        spacing: 12,
+                        runSpacing: 8,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          if (p.isFree)
+                            Text('Free', style: GoogleFonts.sora(fontSize: 38, fontWeight: FontWeight.w800, height: 1.1))
+                          else
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4),
+                                  child: Text('₹', style: GoogleFonts.sora(fontSize: 20, color: Tk.mut, fontWeight: FontWeight.w600)),
+                                ),
+                                Text(p.price.substring(1),
+                                    style: GoogleFonts.sora(fontSize: 38, fontWeight: FontWeight.w800, height: 1.1)),
+                              ],
+                            ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: Colors.white.withValues(alpha: .06),
+                              border: Border.all(color: Tk.line),
+                            ),
+                            child: Row(mainAxisSize: MainAxisSize.min, children: [
+                              Container(
+                                width: 7,
+                                height: 7,
+                                decoration: const BoxDecoration(shape: BoxShape.circle, color: Tk.good),
+                              ),
+                              const SizedBox(width: 6),
+                              Text(p.validity, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                            ]),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 14),
+                      const Divider(color: Tk.line, height: 1),
+                      const SizedBox(height: 14),
+                      for (final f in features) ...[
+                        _FeatureRow(feature: f, value: f.values[index]),
+                        const SizedBox(height: 12),
+                      ],
+                      const Text(conditionsNote, style: TextStyle(color: Tk.mut, fontSize: 11, height: 1.4)),
+                      const SizedBox(height: 8),
+                    ],
                   ),
+                ),
+                const SizedBox(height: 10),
+                GradientButton(
+                  label: current ? 'Your current plan' : (p.isFree ? 'Switch to Explorer' : 'Choose ${p.name}'),
+                  secondary: !p.popular,
+                  onPressed: current ? null : () => _confirm(context, index),
                 ),
               ],
             ),
@@ -170,16 +183,6 @@ class _PlanCard extends StatelessWidget {
               ),
             ),
           ),
-        Positioned(
-          left: 16,
-          right: 16,
-          bottom: 16,
-          child: GradientButton(
-            label: current ? 'Your current plan' : (p.isFree ? 'Switch to Explorer' : 'Choose ${p.name}'),
-            secondary: !p.popular,
-            onPressed: current ? null : () => _confirm(context, index),
-          ),
-        ),
       ],
     );
   }
